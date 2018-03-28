@@ -1,0 +1,16 @@
+web:
+  build: .
+  environment:
+   - DEBUG=False
+  env_file:
+   - db.env
+   - email.env
+  volumes: 
+   - .:/docker/heartbeats/
+  ports: 
+   - "5827:80"
+  command: bash -c "cd /docker/heartbeats/src/front/ && cnpm i && npm run build && python /docker/heartbeats/init.py &&  supervisord -n"
+
+  # 默认使用的是version 1格式的编排语法,
+  #因为mysql我准备放在一个单独的服务里, 要是使用version2默认会创建
+  # 网桥,无法与mysql这些单独的服务通信了
