@@ -10,7 +10,7 @@ from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
 
 from app.models import Service
-from app.tasks import send_mail_async
+from app.tasks import send_djmail_async
 
 logger = logging.getLogger("app")
 
@@ -29,11 +29,13 @@ class Command(BaseCommand):
             logger.warning('service %s notify_to is empty', service.name)
             return
 
-        send_mail_async(settings.DEFAULT_FROM_EMAIL,
-                        service.notify_to.strip().split(";"),
-                        'heartbeats check:{}'.format(service.name),
-                        msg
-                        )
+        send_djmail_async(service.notify_to.strip().split(";"),
+                          service.name,
+                          service.tp,
+                          service.value,
+                          service.grace,
+                          msg
+                          )
 
     def get_last_ping(self, service):
         latest_pings = service.pings.order_by('-id')[:1]

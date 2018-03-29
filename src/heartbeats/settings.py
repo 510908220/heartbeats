@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'silk',
     'django_q',
+    'djmail',
     'app'
 ]
 

@@ -53,7 +53,6 @@ class ServiceFilter(django_filters.FilterSet):
 class TagViewSet(DefaultsMixin, viewsets.ModelViewSet):
     queryset = Tag.objects.order_by('created')
     serializer_class = TagSerializer
-    filter_fields = ('service',)
     ordering_fields = ('created', )
 
     def get_queryset(self):
@@ -63,7 +62,7 @@ class TagViewSet(DefaultsMixin, viewsets.ModelViewSet):
 class PingViewSet(DefaultsMixin, viewsets.ModelViewSet):
     queryset = Ping.objects.order_by('created')
     serializer_class = PingSerializer
-
+    filter_fields = ('service',)
     ordering_fields = ('created', )
 
     def get_queryset(self):

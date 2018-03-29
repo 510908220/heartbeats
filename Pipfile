@@ -1,12 +1,9 @@
 [[source]]
-
 url = "https://pypi.tuna.tsinghua.edu.cn/simple"
 verify_ssl = true
 name = "pypi"
 
-
 [packages]
-
 django = "*"
 django-tagging = "*"
 "pybase62" = "*"
@@ -19,12 +16,12 @@ ipython = "*"
 django-debug-toolbar = "*"
 django-silk = "*"
 uwsgi = "*"
-
+requests = "*"
+django-q = "*"
+pendulum = "==1.4.2"
+djmail = "*"
 
 [dev-packages]
 
-
-
 [requires]
-
-python_version = "3.6"
+python_version = "3.5"

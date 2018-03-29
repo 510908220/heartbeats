@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "efc354b1d264c26bd919cb50bcb1bd811bb778f461fb5d190676894429291bc2"
+            "sha256": "8d15f0af88eacba26ba00c4b4d7ab53e85dc4fc0e3991f6dedf8ab66fa0d6ef1"
         },
         "host-environment-markers": {
             "implementation_name": "cpython",
@@ -18,7 +18,7 @@
         },
         "pipfile-spec": 6,
         "requires": {
-            "python_version": "3.6"
+            "python_version": "3.5"
         },
         "sources": [
             {
@@ -29,9 +29,17 @@
         ]
     },
     "default": {
+        "arrow": {
+            "hashes": [],
+            "version": "==0.12.1"
+        },
         "autopep8": {
             "hashes": [],
             "version": "==1.3.4"
+        },
+        "blessed": {
+            "hashes": [],
+            "version": "==1.14.2"
         },
         "certifi": {
             "hashes": [],
@@ -61,6 +69,14 @@
             "hashes": [],
             "version": "==1.1.0"
         },
+        "django-picklefield": {
+            "hashes": [],
+            "version": "==1.0.0"
+        },
+        "django-q": {
+            "hashes": [],
+            "version": "==0.9.4"
+        },
         "django-silk": {
             "hashes": [],
             "version": "==2.0.0"
@@ -72,6 +88,10 @@
         "djangorestframework": {
             "hashes": [],
             "version": "==3.7.7"
+        },
+        "djmail": {
+            "hashes": [],
+            "version": "==1.0.1"
         },
         "gprof2dot": {
             "hashes": [],
@@ -108,6 +128,10 @@
         "parso": {
             "hashes": [],
             "version": "==0.1.0"
+        },
+        "pendulum": {
+            "hashes": [],
+            "version": "==1.4.2"
         },
         "pexpect": {
             "hashes": [],
@@ -150,6 +174,10 @@
             "hashes": [],
             "version": "==2018.3"
         },
+        "pytzdata": {
+            "hashes": [],
+            "version": "==2018.3"
+        },
         "requests": {
             "hashes": [],
             "version": "==2.18.4"
@@ -169,6 +197,10 @@
         "traitlets": {
             "hashes": [],
             "version": "==4.3.2"
+        },
+        "tzlocal": {
+            "hashes": [],
+            "version": "==1.5.1"
         },
         "urllib3": {
             "hashes": [],
