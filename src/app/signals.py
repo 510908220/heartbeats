@@ -1,7 +1,10 @@
+import base62
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from .models import Service
-import base62
+
+from app.tasks import notify_async
+
+from .models import Ping, Service
 
 
 @receiver(post_save, sender=Service)
@@ -21,3 +24,19 @@ def add_first_ping(sender, instance, created, **kwargs):
         ua='iphone xxx',
         data=''
     )
+
+
+@receiver(post_save, sender=Ping)
+def check_ping(sender, instance, created, **kwargs):
+    if not created:
+        return
+    data = instance.data.strip()
+    if not data:
+        return
+    notify_async(instance.service.notify_to.strip().split(";"),
+                 instance.service.name,
+                 instance.service.tp,
+                 instance.service.value,
+                 instance.service.grace,
+                 data
+                 )

@@ -29,7 +29,15 @@
 
 ## 告警
 
+普通告警:到点没上上报数据导致触发告警
+
 ![](images/alert.jpg)
+
+根据上报的 data告警
+
+例如:`curl -u root:'xxxx' -X POST 'http://192.168.0.1/api/pings/?service=60y4E&&data=123'`
+
+![](images/alert_ex.jpg)
 
 ## 数据上报方式
 
@@ -38,13 +46,13 @@
 (1) linux命令方式:
 
 ```bash
-curl -u root:'xxxx' -X POST 'http://192.168.0.1/api/pings/?service=60y4E&&data=2222'
+curl -u root:'xxxx' -X POST 'http://192.168.0.1/api/pings/?service=60y4E&&data=xxx'
 ```
 
 这里简单说一下各个字段含义:
 
-- 60y4E是在创建服务cert-sync时生成的一个短地址.
-- 2222现在是没有含义的,会存到数据库data字段的. 后续可以根据这个值来做更多事情,比如服务之星是否成功等.
+- service:60y4E是在创建服务cert-sync时生成的一个短地址.
+- data:如果这个字段不为空的话, 后台会触发一个告警. 一般可以使用这个上报一些错误.
 - `-u root:'xxxx' `这个是后台的账号和密码,后台加入了权限.
 
 (2) python方式:
