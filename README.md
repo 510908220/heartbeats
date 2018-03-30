@@ -67,8 +67,11 @@ r = requests.post('http://192.168.0.1/api/pings/?service=60y4E&&data=2222', auth
 ## 使用方式
 
 - 修改`email.env`里的邮件配置.
-- 修改`db.env`数据库配置,我用的是 mysql
+- 修改`db.env`数据库配置,我用的是 mysql,并创建数据库`CREATE DATABASE heartbeats CHARACTER SET utf8 COLLATE utf8_general_ci;`
+- 修改`src/front/src/api/api.js`里的`base`和`Server`为宿主机映射容器的地址. 比如宿主机是`192.168.0.1`, 那么需要修改为`192.168.0.1:5827`, 具体端口号是`docker-compose.yml`里指定的.
 - 切换到目录下,执行:`docker-compose build && docker-compose up -d`
+- 执行`docker exec -it heartbeats_web_1 pipenv run python src/manage.py createsuperuser`创建管理员用户. 在上报数据的时候需要一个授权. 或者可以创建一个通用账号专门用于上报数据.
+- 打开`http://宿主机ip:5827/`就能使用服务了.
 
 
 
