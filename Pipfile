@@ -20,6 +20,7 @@ requests = "*"
 django-q = "*"
 pendulum = "==1.4.2"
 djmail = "*"
+premailer = "*"
 
 [dev-packages]
 
