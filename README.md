@@ -75,6 +75,39 @@ r = requests.post('http://192.168.0.1/api/pings/?service=60y4E&&data=2222', auth
 
 
 
+## agent
+
+agent支持远程从配置里的机器采集数据, 然后汇总上报给服务器。这样相当于一个小的监控节点了。
+
+- 注册一个新的服务
+
+- 将信息填入模板，根据实际定制, 例如:
+
+    ![](images/agent_service.png)
+
+- 修改配置:
+
+  `agent/config.yaml`
+
+  - SERVICE：服务名称,如上图的"地址"字段
+  - CHECK_INTERVAL_MIN:检查间隔,如上图的"值"
+  - KEY:  当前机器登陆租户内其他机器的秘钥
+
+  接着修改要监控的目标IP, 例子里都是云端认证的监控项. 基本都是
+
+  - 内存
+  - CPU
+  - 磁盘
+  - 进程
+
+- 部署开始监控
+
+  根据设备监控的间隔，例如
+
+  ```bash
+  */30 * * * *  python /opt/agent.py  
+  ```
+
 ## 注意 
 
 后台都是采用的 UTC时间存储的, 实际检测逻辑是按照`Asia/Shanghai`时区进行的. 界面上显示的时间也是UTC的. 

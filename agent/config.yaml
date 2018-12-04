@@ -1,0 +1,29 @@
+
+SERVER:
+  IP: "192.168.0.1"
+  USER: root
+  PASSWD: "!@#$ESZAQ"
+  SERVICE: 60y3rart
+  CHECK_INTERVAL_MIN: 30
+AGENT:
+  SSH:
+    PORT: 22
+    USER: root
+    KEY: /root/.ssh/private
+IPS:
+    192.168.0.3:
+      DESC: "mongo1"
+      BASIC:
+        MEM: 90
+        DISK: 90
+        CPU: 90
+      PROCESS:
+        - "/usr/bin/mongod -f /etc/mongod.conf"
+    192.168.0.4:
+      DESC: "mongo2"
+      BASIC:
+        MEM: 90
+        DISK: 90
+        CPU: 90
+      PROCESS:
+        - "/usr/bin/mongod -f /etc/mongod.conf"
